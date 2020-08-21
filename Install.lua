@@ -302,6 +302,9 @@ local gitUrl = "https://github.com/OTRD5k/NevermoreEngine/"
 local branch = "installer"
 
 --spawn(function()
+
+print("Installing: " .. gitUrl .. "tree/" .. branch .. "/Modules")
+
 	GitHub:Install(
 		gitUrl .. "tree/" .. branch .. "/Modules",
 		game:GetService("ServerScriptService")
@@ -309,12 +312,16 @@ local branch = "installer"
 	threadsCompleted[1] = true
 --end)
 
+print(gitUrl .. "blob/" .. branch .. "/loader/ReplicatedStorage/Nevermore/init.lua")
+
 --spawn(function()
 	local init = GitHub:Install(gitUrl .. "blob/" .. branch .. "/loader/ReplicatedStorage/Nevermore/init.lua")
 	init.Nevermore.Nevermore.Parent = game:GetService("ReplicatedStorage")
 	init:Destroy()
 	threadsCompleted[2] = true
 --end)
+
+print("Should be done")
 
 repeat
 	wait()
