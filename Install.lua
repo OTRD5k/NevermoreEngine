@@ -298,20 +298,23 @@ print("Installing NevermoreEngine...")
 
 local threadsCompleted = table.create(2, false)
 
-spawn(function()
+local gitUrl = "https://github.com/OTRD5k/NevermoreEngine/"
+local branch = "installer"
+
+--spawn(function()
 	GitHub:Install(
-		"https://github.com/Quenty/NevermoreEngine/tree/version2/Modules",
+		gitUrl .. "tree/" .. branch .. "/Modules",
 		game:GetService("ServerScriptService")
 	)
 	threadsCompleted[1] = true
-end)
+--end)
 
-spawn(function()
-	local init = GitHub:Install("https://github.com/Quenty/NevermoreEngine/blob/version2/loader/ReplicatedStorage/Nevermore/init.lua")
+--spawn(function()
+	local init = GitHub:Install(gitUrl .. "blob/" .. branch .. "/loader/ReplicatedStorage/Nevermore/init.lua")
 	init.Nevermore.Nevermore.Parent = game:GetService("ReplicatedStorage")
 	init:Destroy()
 	threadsCompleted[2] = true
-end)
+--end)
 
 repeat
 	wait()
